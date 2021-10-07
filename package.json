@@ -1,0 +1,29 @@
+{
+  "name": "my-docker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "debug": "nodemon --inspect=0.0.0.0:9229 server.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "nodemon": "^2.0.13",
+    "ronin-database": "^0.1.1",
+    "ronin-mocks": "^0.1.6",
+    "ronin-server": "^0.1.3"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AXhyra95/project-docker.git"
+  },
+  "bugs": {
+    "url": "https://github.com/AXhyra95/project-docker/issues"
+  },
+  "homepage": "https://github.com/AXhyra95/project-docker#readme"
+}
