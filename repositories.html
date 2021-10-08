@@ -1,0 +1,77 @@
+<html>
+
+    <head>
+        <title>
+            My project
+        </title>
+
+        <style>
+            .label,
+            .Label {
+                display: inline-block;
+                padding: 0 7px;
+                font-size: 12px;
+                font-weight: 500;
+                line-height: 18px;
+                border: 1px solid transparent;
+                border-radius: 2em;
+                background-color: transparent !important;
+                border-color: var(--color-border-default);
+            }
+
+            .gutter-condensed>[class*=col-] {
+                padding-right: 8px !important;
+                padding-left: 8px !important;
+            }
+
+            .d-flex {
+                display: flex !important;
+            }
+        </style>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+            integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    </head>
+
+    <body>
+        <nav aria-label="breadcrumb" class="main-breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Profile</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Repositories</li>
+            </ol>
+        </nav>
+        <div class="container-fluid">
+
+            <div id="listrepositories" class="row"></div>
+        </div>
+
+    </body>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script>
+
+        var repos_url = "";
+
+        $(document).ready(function () {
+
+            $.ajax({
+                url: 'getrepositories',
+                method: 'GET',
+                success: function (data) {
+                    repos_html = '';
+                    data.forEach(element => {
+                        repos_html += '<div class="col-md-6 mb-3"><div class="card"><div class="card-body"><h5 class="card-title">'+element.name+'<span class="Label Label--secondary v-align-middle float-right">'+element.visibility+'</span></h5><p class="card-text">'+element.description+'</p><a href="/AXhyra95/AXhyra95/stargazers" class="pinned-item-meta Link--muted "><svg aria-label="star" role="img" height="16" viewBox="0 0 16 16" version="1.1" width="16"data-view-component="true" class="octicon octicon-star"><path fill-rule="evenodd" d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25zm0 2.445L6.615 5.5a.75.75 0 01-.564.41l-3.097.45 2.24 2.184a.75.75 0 01.216.664l-.528 3.084 2.769-1.456a.75.75 0 01.698 0l2.77 1.456-.53-3.084a.75.75 0 01.216-.664l2.24-2.183-3.096-.45a.75.75 0 01-.564-.41L8 2.694v.001z"></path></svg>'+element.stargazers_count+'</a></div></div></div>'
+                    });
+
+                    $('#listrepositories').html(repos_html)
+                }
+            });
+
+        });
+
+    </script>
+
+</html>
