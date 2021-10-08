@@ -55,6 +55,7 @@ exports.getRepositories = async  (req, res) => {
   })
 
   const result = await response.json()
+  res.send(result)
 
   await Repos.find().then( async repos => {
 
@@ -85,7 +86,6 @@ exports.getRepositories = async  (req, res) => {
 
     await Repos.insertMany(object_repos).then(() => {
 
-        res.send(result)
 
       }).catch( err => {
         res.status(422).json({ 
